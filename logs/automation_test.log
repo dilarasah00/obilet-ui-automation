@@ -1,0 +1,38 @@
+2026-04-04 00:12:33.425 [main] INFO  utils.LogHelper - **********************************************************
+2026-04-04 00:12:33.433 [main] INFO  utils.LogHelper - --- TEST STARTS: testSearchBus ---
+2026-04-04 00:12:33.433 [main] INFO  utils.LogHelper - **********************************************************
+2026-04-04 00:12:33.433 [main] INFO  utils.LogHelper - Driver instance is null. Creating a new session...
+2026-04-04 00:12:34.835 [main] INFO  utils.LogHelper - ChromeDriver has been initialized successfully.
+2026-04-04 00:12:34.883 [main] INFO  utils.LogHelper - Browser window maximized.
+2026-04-04 00:12:34.884 [main] INFO  utils.LogHelper - Navigating to URL: https://www.obilet.com/
+2026-04-04 00:12:36.074 [main] INFO  utils.LogHelper - STEP 1: Searching for bus tickets from Ankara to Samsun on 2026-01-30
+2026-04-04 00:12:36.074 [main] INFO  utils.LogHelper - Entering origin: Ankara
+2026-04-04 00:12:37.470 [main] INFO  utils.LogHelper - Entering destination: Samsun
+2026-04-04 00:12:38.833 [main] INFO  utils.LogHelper - Opening calendar...
+2026-04-04 00:12:39.004 [main] WARN  utils.LogHelper - Target date is in the past. Adjusted to default: 2026-04-07
+2026-04-04 00:12:39.004 [main] INFO  utils.LogHelper - Selecting journey date: 2026-04-07
+2026-04-04 00:12:40.719 [main] INFO  utils.LogHelper - Clicking the search button to list journeys.
+2026-04-04 00:12:41.574 [main] INFO  utils.LogHelper - STEP 2: Applying filters for Company: Ali Osman Ulusoy and Seat Type: 2+1
+2026-04-04 00:12:43.506 [main] INFO  utils.LogHelper - Ad popup closed.
+2026-04-04 00:12:43.730 [main] INFO  utils.LogHelper - Filtering by company: Ali Osman Ulusoy
+2026-04-04 00:12:45.465 [main] INFO  utils.LogHelper - Ad popup closed.
+2026-04-04 00:12:45.466 [main] INFO  utils.LogHelper - Filtering by origin place: Ankara (Aşti) Otogarı
+2026-04-04 00:12:45.949 [main] INFO  utils.LogHelper - Filtering by seat type: 2+1
+2026-04-04 00:12:46.694 [main] INFO  utils.LogHelper - STEP 3: Verifying that all listed journeys match the selected filters.
+2026-04-04 00:12:47.755 [main] INFO  utils.LogHelper - Starting verification of filtered results...
+2026-04-04 00:12:53.033 [main] INFO  utils.LogHelper - Successfully verified 40 journeys. All match the filters.
+2026-04-04 00:12:53.034 [main] INFO  utils.LogHelper - STEP 4: Selecting the first available journey and a suitable seat for gender: F
+2026-04-04 00:12:53.034 [main] INFO  utils.LogHelper - Selecting the first available journey from the list.
+2026-04-04 00:12:53.806 [main] INFO  utils.LogHelper - Looking for a suitable seat for gender: F
+2026-04-04 00:12:54.985 [main] INFO  utils.LogHelper - Clicking on the selected seat. Seat availability type: F
+2026-04-04 00:12:55.110 [main] INFO  utils.LogHelper - Waiting for gender selection popup...
+2026-04-04 00:12:55.146 [main] INFO  utils.LogHelper - Handling gender popup with selection: female
+2026-04-04 00:12:55.312 [main] INFO  utils.LogHelper - Clicking confirm button to proceed to checkout.
+2026-04-04 00:12:55.484 [main] INFO  utils.LogHelper - STEP 5: Verifying redirection to the checkout page.
+2026-04-04 00:12:55.484 [main] INFO  utils.LogHelper - Closing additional package options if present.
+2026-04-04 00:12:56.700 [main] INFO  utils.LogHelper - Checking current URL to verify redirection to checkout page.
+2026-04-04 00:12:57.791 [main] INFO  utils.LogHelper - SUCCESS: E2E Bus Booking Flow completed successfully.
+2026-04-04 00:12:57.797 [main] INFO  utils.LogHelper - Finishing the test execution...
+2026-04-04 00:12:57.797 [main] INFO  utils.LogHelper - Quitting the driver and closing all windows.
+2026-04-04 00:12:58.043 [main] INFO  utils.LogHelper - --- TEST COMPLETED: testSearchBus ---
+2026-04-04 00:12:58.043 [main] INFO  utils.LogHelper - xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

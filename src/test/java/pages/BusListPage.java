@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import java.util.NoSuchElementException;
 import org.openqa.selenium.By;
+import utils.LogHelper;
 
 public class BusListPage extends BasePage{
 
@@ -53,6 +54,7 @@ public class BusListPage extends BasePage{
 
 
     public void selectCompany(String companyName){
+        LogHelper.info("Filtering by company: " + companyName);
         click(companyMenu);
         waitForElementsVisible(companyOptions);
 
@@ -65,6 +67,7 @@ public class BusListPage extends BasePage{
     }
 
     public void selectOrigin(String originPlace){
+        LogHelper.info("Filtering by origin place: " + originPlace);
         click(originMenu);
         waitForElementsVisible(originOptions);
 
@@ -77,6 +80,7 @@ public class BusListPage extends BasePage{
     }
 
     public void selectSeatType(String selectedType){
+        LogHelper.info("Filtering by seat type: " + selectedType);
         click(seatTypeMenu);
         waitForElementsVisible(seatTypeOptions);
 
@@ -94,6 +98,7 @@ public class BusListPage extends BasePage{
     }
 
     public boolean verifyFilteredResults(String expectedCompany, String expectedType, String expectedOrigin, String expectedDestination) {
+        LogHelper.info("Starting verification of filtered results...");
         waitForElementsVisible(journeyResults);
 
         int count = 1;
@@ -108,30 +113,25 @@ public class BusListPage extends BasePage{
             boolean originMatch = actualOrigin.toLowerCase().contains(expectedOrigin.toLowerCase().trim());
             boolean destinationMatch = actualDestination.toLowerCase().contains(expectedDestination.toLowerCase().trim());
 
-            System.out.println("\n--- Checking Journey No: " + count + " ---");
-            System.out.println("COMPANY     -> Expected: [" + expectedCompany + "] | Actual: [" + actualCompany + "] -> Match: " + companyMatch);
-            System.out.println("SEAT TYPE   -> Expected: [" + expectedType + "] | Actual: [" + actualType + "] -> Match: " + typeMatch);
-            System.out.println("ORIGIN      -> Expected: [" + expectedOrigin + "] | Actual: [" + actualOrigin + "] -> Match: " + originMatch);
-            System.out.println("DESTINATION -> Expected: [" + expectedDestination + "] | Actual: [" + actualDestination + "] -> Match: " + destinationMatch);
+            LogHelper.debug("Checking Journey No: " + count + " | Company: " + actualCompany + " | Type: " + actualType);
 
             if (!(companyMatch && typeMatch && originMatch && destinationMatch)) {
-                System.err.println("!!! ERROR: This journey does not match the filters. Stopping test.");
+                LogHelper.error("FILTER MISMATCH at Journey No: " + count);
+                LogHelper.error("Expected: " + expectedCompany + ", " + expectedType + " | Actual: " + actualCompany + ", " + actualType);
                 return false;
             }
             count++;
         }
-        System.out.println("\n✅ SUCCESS: All journeys match the selected filters!");
+        LogHelper.info("Successfully verified " + (count-1) + " journeys. All match the filters.");
         return true;
     }
     public void closePopupIfPresent(){
-        try {/*
-            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
-            shortWait.until(ExpectedConditions.visibilityOf(adPopup));*/
+        try {
             waitForElementVisible(adPopup);
             click(closePopupButton);
+            LogHelper.info("Ad popup closed.");
         }
         catch (TimeoutException | NoSuchElementException e){
-            System.out.println("Info: Ad popup did not appear, continuing test.");
-        }
+            LogHelper.debug("Ad popup did not appear, skipping.");        }
     }
 }

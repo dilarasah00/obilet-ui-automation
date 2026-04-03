@@ -32,6 +32,11 @@ public class BasePage {
         return wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
+    public List<WebElement> waitForElementsLocated(By locator){
+        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
+
+
 
     public void click(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
