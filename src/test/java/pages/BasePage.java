@@ -61,15 +61,8 @@ public class BasePage {
         return driver.getCurrentUrl();
     }
 
-    /*public void scrollToElement(WebElement element) {
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+    public void waitForElementToDisappear(By locator) {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
-    public void clickWithJS(WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript(
-                "var evObj = document.createEvent('MouseEvents');" +
-                        "evObj.initEvent('click', true, true);" +
-                        "arguments[0].dispatchEvent(evObj);", element);
-    }*/
 }

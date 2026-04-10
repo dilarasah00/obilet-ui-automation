@@ -99,7 +99,6 @@ public class BusSeatSelectionPage extends BasePage {
 
     public String checkCurrentUrl(){
         LogHelper.info("Checking current URL to verify redirection to checkout page.");
-        try { Thread.sleep(1000); } catch (InterruptedException e) {}
         By form = By.id("form");
         wait.until(ExpectedConditions.visibilityOfElementLocated(form));
         return getCurrentUrl();

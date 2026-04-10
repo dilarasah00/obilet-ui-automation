@@ -2,6 +2,8 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import java.time.LocalDate;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.LogHelper;
 
 public class BusSearchPage extends BasePage{
@@ -29,14 +31,20 @@ public class BusSearchPage extends BasePage{
     public void enterOrigin(String originLocation) {
         LogHelper.info("Entering origin: " + originLocation);
         type(originInput, originLocation);
-        try { Thread.sleep(1000); } catch (InterruptedException e) {}
+
+        By originFirstItem = By.cssSelector("ob-select#origin div.results ul li.item span.location");
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(originFirstItem, originLocation));
+
         originInput.sendKeys(Keys.ENTER);
     }
 
     public void enterDestination(String destinationLocation){
         LogHelper.info("Entering destination: " + destinationLocation);
         type(destinationInput, destinationLocation);
-        try { Thread.sleep(1000); } catch (InterruptedException e) {}
+
+        By destFirstItem = By.cssSelector("ob-select#destination div.results ul li.item span.location");
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(destFirstItem, destinationLocation));
+
         destinationInput.sendKeys(Keys.ENTER);
 
     }
@@ -64,8 +72,7 @@ public class BusSearchPage extends BasePage{
        } catch (NoSuchElementException e) {
            LogHelper.error("The specified date could not be found: " + finalDateToSelect + " | Original requested: " + dateValue);
        }
-       try { Thread.sleep(1000); } catch (InterruptedException e) {}
-
+       waitForElementToDisappear(byForDate);
 
    }
 

@@ -45,6 +45,7 @@ public class E2ETest extends BaseTest {
         busSeatSelectionPage.selectSeatFlexible(gender);
         busSeatSelectionPage.handleGenderFlexible(gender);
         busSeatSelectionPage.clickConfirmButton();
+        busSeatSelectionPage.closePopUp();
 
         LogHelper.info("STEP 5: Verifying redirection to the checkout page.");
         busSeatSelectionPage.closePackageOption();
